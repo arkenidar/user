@@ -23,7 +23,7 @@
 
 <script>
 function login_submit(event){
-    $.post('login-ajax.php', $('#login').serialize(), function(data) {
+    $.post('ajax.php?action=login', $('#login').serialize(), function(data) {
         //alert( data.message );
         $('#message').text( data.message.text );
         if(data.message.status=='login successful')
@@ -33,7 +33,7 @@ function login_submit(event){
 }
 
 function retrieve_password(event){
-    $.post('retrieve-password-ajax.php', $('#login').serialize(), function(data) {
+    $.post('ajax.php?action=retrieve_password', $('#login').serialize(), function(data) {
         // alert( data.message );
         $('#message').text( data.message );
     });

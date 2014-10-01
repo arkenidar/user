@@ -21,7 +21,7 @@
 
 <script>
 function register_submit(event){
-    $.post('register-ajax.php', $('#register').serialize(), function(data) {
+    $.post('ajax.php?action=register', $('#register').serialize(), function(data) {
         //alert( data.message );
         $('#message').text( data.message );
     });

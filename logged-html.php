@@ -21,7 +21,7 @@ function logout_click(event){
     
     //alert('logout!');
     
-    $.get( "logout-lib.php", function( data ) {
+    $.get( "ajax.php?action=logout", function( data ) {
         location.reload();
     });
 
