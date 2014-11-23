@@ -19,21 +19,21 @@
 
 <p id="message"></p>
 
-<a href="register-page.php">Register page</a>
+<a href="register-page">Register page</a>
 
 <script>
 function login_submit(event){
-    $.post('ajax.php?action=login', $('#login').serialize(), function(data) {
+    $.post('ajax?action=login', $('#login').serialize(), function(data) {
         //alert( data.message );
         $('#message').text( data.message.text );
         if(data.message.status=='login successful')
-            location.href = 'logged-html.php';
+            location.href = 'logged-html';
     });
     return false;
 }
 
 function retrieve_password(event){
-    $.post('ajax.php?action=retrieve_password', $('#login').serialize(), function(data) {
+    $.post('ajax?action=retrieve_password', $('#login').serialize(), function(data) {
         // alert( data.message );
         $('#message').text( data.message );
     });

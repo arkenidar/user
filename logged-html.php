@@ -21,7 +21,7 @@ function logout_click(event){
     
     //alert('logout!');
     
-    $.get( "ajax.php?action=logout", function( data ) {
+    $.get( "ajax?action=logout", function( data ) {
         location.reload();
     });
 
@@ -39,7 +39,7 @@ You are logged out.
 
 <br>
 
-<a href="login-page.php">Login page</a>
+<a href="login-page">Login page</a>
 
 <?php
 }

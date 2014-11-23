@@ -17,11 +17,11 @@
 
 <p id="message"></p>
 
-<a href="login-page.php">Login page</a>
+<a href="login-page">Login page</a>
 
 <script>
 function register_submit(event){
-    $.post('ajax.php?action=register', $('#register').serialize(), function(data) {
+    $.post('ajax?action=register', $('#register').serialize(), function(data) {
         //alert( data.message );
         $('#message').text( data.message );
     });
