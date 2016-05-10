@@ -1,9 +1,27 @@
 <?php
 
+$actions = [
+'test' => 'test.php',
+'register' => 'register-ajax.php',
+'login' => 'login-ajax.php',
+'logout' => 'logout-lib.php',
+'retrieve_password' => 'retrieve-password-ajax.php',
+];
+
+$action = @$_REQUEST['action'];
+
+if(array_key_exists($action, $actions))
+    require_once $actions[$action];
+else
+    echo 'not found';
+
+/*
+
 class Ajax {
 
     function test(){
-        echo 'test';
+        require_once 'test.php';
+        //echo 'test';
     }
     
     function register(){
@@ -26,13 +44,10 @@ class Ajax {
 
 $ajax = new Ajax();
 
-if(!isset($_REQUEST['action']))
-    $action = '';
-else
-    $action = $_REQUEST['action'];
-
 if( is_callable( array($ajax, $action) ) ){
     $ajax->$action();
-}
+}else echo 'not found';
+
+*/
 
 ?>
