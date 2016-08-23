@@ -1,0 +1,34 @@
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+
+<span id="who_is_logged"></span><span id="who_is_logged_message"></span>
+<script>
+$("#who_is_logged").load("who_is_logged.php", function( response, status, xhr ) {
+  var msg;
+  if ( status == "error" ) {
+    msg = "Sorry but there was an error: " + xhr.status + " " + xhr.statusText;
+  } else if( status == "success") {
+    msg = " is logged in.";
+  }
+  $( "#who_is_logged_message" ).html( msg );
+});
+</script>
+
+<br>
+
+<button type="button" id="logout">Logout</button> 
+
+<script>
+
+$(function(){ $('#logout').click(logout_click); });
+
+function logout_click(event){
+    
+    //alert('logout!');
+    
+    $.get( "ajax?action=logout", function( data ) {
+        location+="/..";
+    });
+
+}
+
+</script>
