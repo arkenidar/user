@@ -4,11 +4,11 @@ session_start();
 
 if( isset($_SESSION['user-name']) ){
 
-    header('Location: logged_in.html');
+    header('Location: logged_in');
 
 }else{
 
-    header('Location: logged_out.html');
+    header('Location: logged_out');
 
 }
 
