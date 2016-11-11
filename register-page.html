@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<?php require_once('jquery-html.php'); ?>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js">
+</script>
 </head>
 <body>
 
@@ -21,14 +22,14 @@
 
 <script>
 function register_submit(event){
-    $.post('ajax?action=register', $('#register').serialize(), function(data) {
+    $.post("ajax.php?action=register", $("#register").serialize(), function(data) {
         //alert( data.message );
-        $('#message').text( data.message );
+        $("#message").text( data.message );
     });
     return false;
 }
 
-$(function(){ $('#register').submit(register_submit); });
+$(function(){ $("#register").submit(register_submit); });
 </script>
 
 </body>

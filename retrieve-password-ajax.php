@@ -1,15 +1,15 @@
 <?php
 
-require_once('request-response-lib.php');
+require_once("request-response-lib.php");
 
-request_valid_parameters_check( ['email'] );
+request_valid_parameters_check( ["email"] );
 
-$username = $_REQUEST['email'];
+$username = $_REQUEST["email"];
 
-require_once('db-connection-lib.php');
+require_once("db-connection-lib.php");
 
-$stmt = $mysqli->prepare('SELECT password FROM users WHERE username=?;');
-$stmt->bind_param('s', $username);
+$stmt = $mysqli->prepare("SELECT password FROM users WHERE username=?;");
+$stmt->bind_param("s", $username);
 $stmt->execute();
 $stmt->bind_result($password);
 $stmt->fetch();
@@ -19,15 +19,15 @@ if( isset($password) == false )
 
 $mail_message =
     array(
-    'to' => $username,
-    'subject' => "Password retrieval for user: $username",
-    'message' => "The registered password for user $username is: $password."
+    "to" => $username,
+    "subject" => "Password retrieval for user: $username",
+    "message" => "The registered password for user $username is: $password."
     );
 
-mail( $mail_message['to'], $mail_message['subject'], $mail_message['message']);
+mail( $mail_message["to"], $mail_message["subject"], $mail_message["message"]);
 
 $message = "The password of user $username was sent at address $username.";
-//$message = $mail_message['message'];
+//$message = $mail_message["message"];
 
 response_exit_message($message);
 

@@ -19,13 +19,13 @@ $("#who_is_logged").load("who_is_logged.php", function( response, status, xhr ) 
 
 <script>
 
-$(function(){ $('#logout').click(logout_click); });
+$(function(){ $("#logout").click(logout_click); });
 
 function logout_click(event){
     
-    //alert('logout!');
+    //alert("logout!");
     
-    $.get( "ajax?action=logout", function( data ) {
+    $.get( "ajax.php?action=logout", function( data ) {
         location+="/..";
     });
 

@@ -23,29 +23,29 @@
 
 <script>
 function login_submit(event){
-  $('#message').text( "Loading..." );
-  $.post('ajax?action=login', $('#login').serialize())
+  $("#message").text( "Loading..." );
+  $.post("ajax.php?action=login", $("#login").serialize())
   .done(function(data) {
       //alert( data.message );
-      $('#message').text( data.message.text );
-      if(data.message.status=='login successful')
-        location.href = 'logged-html';
+      $("#message").text( data.message.text );
+      if(data.message.status=="login successful")
+        location.href = ".";
   }).fail(function() {
-    $('#message').text( 'Internet error' );
+    $("#message").text( "Internet error" );
   })
   return false;
 }
 
 function retrieve_password(event){
-    $.post('ajax?action=retrieve_password', $('#login').serialize(), function(data) {
+    $.post("ajax.php?action=retrieve_password", $("#login").serialize(), function(data) {
         // alert( data.message );
-        $('#message').text( data.message );
+        $("#message").text( data.message );
     });
     return false;
 }
 
-$(function(){ $('#login').submit(login_submit); });
-$(function(){ $('#retrieve-pw').click(retrieve_password); });
+$(function(){ $("#login").submit(login_submit); });
+$(function(){ $("#retrieve-pw").click(retrieve_password); });
 </script>
 
 </body>

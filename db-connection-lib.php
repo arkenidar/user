@@ -1,3 +1,3 @@
 <?php
-$mysqli = @ new mysqli('localhost', 'root', 'password123', 'tagplaza_schema'); 
+$mysqli = @ new mysqli("localhost", "root", "root", "database"); 
 ?>
