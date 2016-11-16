@@ -13,6 +13,7 @@
 </div>
 
 <script>
+$(function(){
 $.get("who_is_logged.php")
   .done(function(logged_user) {
     if(logged_user==""){
@@ -23,6 +24,7 @@ $.get("who_is_logged.php")
     $("#who_is_logged").text(logged_user);
     $("#logged_info").show();
   })
+});
 </script>
 
 <script>
