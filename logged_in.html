@@ -18,6 +18,7 @@ $.get("who_is_logged.php")
     if(logged_user==""){
       logged_user = "No one";
       $("#logout").hide();
+      location+="/..";
     }
     $("#who_is_logged").text(logged_user);
     $("#logged_info").show();
