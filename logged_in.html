@@ -9,23 +9,5 @@
 </div>
 
 <script>
-function logged(){
-$.get("who_is_logged.php")
-	.done(function(logged_user) {
-	if(""!=logged_user){
-		$("#who_is_logged").text(logged_user);
-		// fragment is ready
-		$("#logged_info").show();
-	}else{
-		location="logged_out";
-	}
-	})
-	.fail(failure);
-}
-
-$(logged);
-
-function logout(event){
-	$.get("ajax.php?action=logout").always(logged);
-}
+$(logged_in);
 </script>

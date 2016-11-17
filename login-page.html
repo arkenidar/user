@@ -14,7 +14,7 @@
 	<br>
 	<input type="submit" value="Login"></input>
 	<br>
-	<input type="button" value="Retrieve Password" id="retrieve-pw"></input>
+	<a href="javascript:void(retrieve_password())">Retrieve Password</a>
 </form>
 
 <p id="message"></p>
@@ -36,16 +36,14 @@ function login_submit(event){
 	return false;
 }
 
-function retrieve_password(event){
+function retrieve_password(){
 	$.post("ajax.php?action=retrieve_password", $("#login").serialize() ).done( function(data) {
 		// alert( data.message );
 		$("#message").text( data.message );
 	});
-	return false;
 }
 
 $(function(){ $("#login").submit(login_submit); });
-$(function(){ $("#retrieve-pw").click(retrieve_password); });
 </script>
 
 </body>
