@@ -1,15 +1,10 @@
 <script src="jquery.js"></script>
-
-<style type="text/css">
-.hidden {
-  display:none;
-}
-</style>
+<link href="style.css" rel="stylesheet" type="text/css">
 
 <div id="logged_info" class="hidden">
 <span id="who_is_logged"></span> is logged in.
 <br>
-<button type="button" id="logout">Logout</button> 
+<a id="logout" href="javascript:logout_click()">Logout</a> 
 </div>
 
 <script>
@@ -17,28 +12,18 @@ $(function(){
 $.get("who_is_logged.php")
   .done(function(logged_user) {
     if(logged_user==""){
-      logged_user = "No one";
-      $("#logout").hide();
-      location+="/..";
+      location="logged_out";
+    }else{
+      $("#who_is_logged").text(logged_user);
+      $("#logged_info").show();
     }
-    $("#who_is_logged").text(logged_user);
-    $("#logged_info").show();
   })
 });
-</script>
-
-<script>
-
-$(function(){ $("#logout").click(logout_click); });
 
 function logout_click(event){
-    
-    //alert("logout!");
-    
+    // logout    
     $.get( "ajax.php?action=logout", function( data ) {
         location+="/..";
     });
-
 }
-
 </script>
