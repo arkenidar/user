@@ -29,7 +29,7 @@ function login_submit(event){
       //alert( data.message );
       $("#message").text( data.message.text );
       if(data.message.status=="login successful")
-        location.href = ".";
+        location.href = "logged_in";
   }).fail(function() {
     $("#message").text( "Internet error" );
   })
