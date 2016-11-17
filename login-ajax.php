@@ -15,19 +15,19 @@ $stmt->bind_result($id);
 $stmt->fetch();
 
 if(isset($id) == false){
-  
-    $text = "Login error. Insert a registered username with its password. If you are not yet registered please register.";
-    $status = "login error";
+
+	$text = "Login error. Insert a registered username with its password. If you are not yet registered please register.";
+	$status = "login error";
 
 } else {
 
-    include("logout-lib.php");
-    
-    $_SESSION["user-name"] = $user;
-    $_SESSION["user-id"] = $id;
-    
-    $text = "Login successful for $user.";
-    $status = "login successful";
+	include("logout-lib.php");
+
+	$_SESSION["user-name"] = $user;
+	$_SESSION["user-id"] = $id;
+
+	$text = "Login successful for $user.";
+	$status = "login successful";
 
 }
 

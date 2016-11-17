@@ -9,11 +9,11 @@
 <h1>Register a new account</h1>
 
 <form id="register">
-    <input type="email" name="email" placeholder="email" required></input>
-    <br>
-    <input type="password" name="password" placeholder="password" pattern=".{5,10}" required title="5 to 10 characters for password"></input>
-    <br>
-    <input type="submit" value="Register"></input>
+	<input type="email" name="email" placeholder="email" required></input>
+	<br>
+	<input type="password" name="password" placeholder="password" pattern=".{5,10}" required title="5 to 10 characters for password"></input>
+	<br>
+	<input type="submit" value="Register"></input>
 </form>
 
 <p id="message"></p>
@@ -22,11 +22,11 @@
 
 <script>
 function register_submit(event){
-    $.post("ajax.php?action=register", $("#register").serialize(), function(data) {
-        //alert( data.message );
-        $("#message").text( data.message );
-    });
-    return false;
+	$.post("ajax.php?action=register", $("#register").serialize()).done(function(data) {
+		//alert( data.message );
+		$("#message").text( data.message );
+	});
+	return false;
 }
 
 $(function(){ $("#register").submit(register_submit); });

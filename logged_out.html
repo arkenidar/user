@@ -1,24 +1,24 @@
 <script src="jquery.js"></script>
 <script src="script.js"></script>
-<link href="style.css">
+<link href="style.css" rel="stylesheet" type="text/css">
 
 <div id="logged_info" class="hidden">
-  You are logged out.
-  <br>
-  <a href="login-page">Login page</a>
+	You are logged out.
+	<br>
+	<a href="login-page">Login page</a>
 </div>
 
 <script>
 $(function(){
 $.get("who_is_logged.php")
-  .done(function(logged_user) {
-    if(""!=logged_user){
-      location="logged_in";
-    }else{
-      // fragment is ready
-      $("#logged_info").show();
-    }
-  })
-  .fail(failure);
+	.done(function(logged_user) {
+	if(""!=logged_user){
+		location="logged_in";
+	}else{
+		// fragment is ready
+		$("#logged_info").show();
+	}
+	})
+	.fail(failure);
 });
 </script>

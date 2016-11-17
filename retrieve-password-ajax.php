@@ -15,14 +15,14 @@ $stmt->bind_result($password);
 $stmt->fetch();
 
 if( isset($password) == false )
-    response_exit_message("The username $username is not registered. Please use a registered email address as username. If you are not yet registered please register.");
+	response_exit_message("The username $username is not registered. Please use a registered email address as username. If you are not yet registered please register.");
 
 $mail_message =
-    array(
-    "to" => $username,
-    "subject" => "Password retrieval for user: $username",
-    "message" => "The registered password for user $username is: $password."
-    );
+	array(
+	"to" => $username,
+	"subject" => "Password retrieval for user: $username",
+	"message" => "The registered password for user $username is: $password."
+	);
 
 mail( $mail_message["to"], $mail_message["subject"], $mail_message["message"]);
 

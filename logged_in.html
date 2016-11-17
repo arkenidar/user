@@ -1,31 +1,31 @@
 <script src="jquery.js"></script>
 <script src="script.js"></script>
-<link href="style.css">
+<link href="style.css" rel="stylesheet" type="text/css">
 
 <div id="logged_info" class="hidden">
-  <span id="who_is_logged"></span> is logged in.
-  <br>
-  <a id="logout" href="javascript:logout()">Logout</a> 
+	<span id="who_is_logged"></span> is logged in.
+	<br>
+	<a id="logout" href="javascript:logout()">Logout</a> 
 </div>
 
 <script>
 function logged(){
 $.get("who_is_logged.php")
-  .done(function(logged_user) {
-    if(""!=logged_user){
-      $("#who_is_logged").text(logged_user);
-      // fragment is ready
-      $("#logged_info").show();
-    }else{
-      location="logged_out";
-    }
-  })
-  .fail(failure);
+	.done(function(logged_user) {
+	if(""!=logged_user){
+		$("#who_is_logged").text(logged_user);
+		// fragment is ready
+		$("#logged_info").show();
+	}else{
+		location="logged_out";
+	}
+	})
+	.fail(failure);
 }
 
 $(logged);
 
 function logout(event){
-  $.get("ajax.php?action=logout").always(logged);
+	$.get("ajax.php?action=logout").always(logged);
 }
 </script>

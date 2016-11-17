@@ -13,9 +13,9 @@ $stmt->bind_param("ss", $user, $_REQUEST["password"]);
 $stmt->execute();
 
 if($stmt->affected_rows==1)
-    $message = "$user is now registered.";
+	$message = "$user is now registered.";
 else if($stmt->affected_rows==-1)
-    $message = "$user is already registered.";
+	$message = "$user is already registered.";
 
 response_exit_message($message);
 

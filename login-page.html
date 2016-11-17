@@ -8,13 +8,13 @@
 <h1>Login into a registered account</h1>
 
 <form id="login">
-    <input type="email" name="email" placeholder="email" required></input>
-    <br>
-    <input type="password" name="password" placeholder="password" required></input>
-    <br>
-    <input type="submit" value="Login"></input>
-    <br>
-    <input type="button" value="Retrieve Password" id="retrieve-pw"></input>
+	<input type="email" name="email" placeholder="email" required></input>
+	<br>
+	<input type="password" name="password" placeholder="password" required></input>
+	<br>
+	<input type="submit" value="Login"></input>
+	<br>
+	<input type="button" value="Retrieve Password" id="retrieve-pw"></input>
 </form>
 
 <p id="message"></p>
@@ -23,25 +23,25 @@
 
 <script>
 function login_submit(event){
-  $("#message").text( "Loading..." );
-  $.post("ajax.php?action=login", $("#login").serialize())
-  .done(function(data) {
-      //alert( data.message );
-      $("#message").text( data.message.text );
-      if(data.message.status=="login successful")
-        location.href = "logged_in";
-  }).fail(function() {
-    $("#message").text( "Internet error" );
-  })
-  return false;
+	$("#message").text( "Loading..." );
+	$.post("ajax.php?action=login", $("#login").serialize())
+	.done(function(data) {
+		//alert( data.message );
+		$("#message").text( data.message.text );
+		if(data.message.status=="login successful")
+		location.href = "logged_in";
+	}).fail(function() {
+		$("#message").text( "Internet error" );
+	})
+	return false;
 }
 
 function retrieve_password(event){
-    $.post("ajax.php?action=retrieve_password", $("#login").serialize(), function(data) {
-        // alert( data.message );
-        $("#message").text( data.message );
-    });
-    return false;
+	$.post("ajax.php?action=retrieve_password", $("#login").serialize() ).done( function(data) {
+		// alert( data.message );
+		$("#message").text( data.message );
+	});
+	return false;
 }
 
 $(function(){ $("#login").submit(login_submit); });
