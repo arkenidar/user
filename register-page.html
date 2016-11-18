@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<script src="jquery.js">
-</script>
+<script src="jquery.js"></script>
+<script src="script.js"></script>
 </head>
 <body>
 
@@ -20,17 +20,7 @@
 
 <a href="login-page">Login page</a>
 
-<script>
-function register_submit(event){
-	$.post("ajax.php?action=register", $("#register").serialize()).done(function(data) {
-		//alert( data.message );
-		$("#message").text( data.message );
-	});
-	return false;
-}
-
-$(function(){ $("#register").submit(register_submit); });
-</script>
+<script> $(function(){ $("#register").submit(register_submit); }); </script>
 
 </body>
 </html>
