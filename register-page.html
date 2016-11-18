@@ -8,7 +8,7 @@
 
 <h1>Register a new account</h1>
 
-<form id="register">
+<form id="register" method="post" onsubmit="register_submit(); return false;">
 	<input type="email" name="email" placeholder="email" required></input>
 	<br>
 	<input type="password" name="password" placeholder="password" pattern=".{5,10}" required title="5 to 10 characters for password"></input>
@@ -19,8 +19,6 @@
 <p id="message"></p>
 
 <a href="login-page">Login page</a>
-
-<script> $(function(){ $("#register").submit(register_submit); }); </script>
 
 </body>
 </html>

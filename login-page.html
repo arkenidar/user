@@ -8,21 +8,19 @@
 
 <h1>Login into a registered account</h1>
 
-<form id="login">
+<form id="login" method="post" onsubmit="login_submit(); return false;">
 	<input type="email" name="email" placeholder="email" required></input>
 	<br>
 	<input type="password" name="password" placeholder="password" required></input>
 	<br>
 	<input type="submit" value="Login"></input>
 	<br>
-	<a href="javascript:void(retrieve_password())">Retrieve Password</a>
+	<a href="javascript:retrieve_password()">Retrieve Password</a>
 </form>
 
 <p id="message"></p>
 
 <a href="register-page">Register page</a>
-
-<script> $(function(){ $("#login").submit(login_submit); }); </script>
 
 </body>
 </html>

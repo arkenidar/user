@@ -36,14 +36,13 @@ function uf(filename){
 	return filename+".php";
 }
 
-function login_submit(event){
+function login_submit(){
 	$("#message").text( "Loading..." );
 	$.post(uf("ajax")+"?action=login", $("#login").serialize(),
 	function(data) {
 		$("#message").text( data.message.text );
 		if(data.message.status=="login successful") location = "logged_in";
 	});
-	return false;
 }
 
 function retrieve_password(){
@@ -53,10 +52,9 @@ function retrieve_password(){
 	});
 }
 
-function register_submit(event){
+function register_submit(){
 	$.post(uf("ajax")+"?action=register", $("#register").serialize(),
 	function(data) {
 		$("#message").text( data.message );
 	});
-	return false;
 }
