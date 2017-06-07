@@ -13,5 +13,4 @@ $action = @$_REQUEST["action"];
 if(array_key_exists($action, $actions))
 	require_once $actions[$action];
 else
-	echo "not found";
-?>
+	echo "action not found";

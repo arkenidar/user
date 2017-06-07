@@ -15,5 +15,3 @@ function request_valid_parameters_check($parameters){
 	if(request_require_parameters($parameters)==false)
 		response_exit_message("invalid parameters");
 }
-
-?>

@@ -8,6 +8,8 @@ $username = $_REQUEST["email"];
 
 require_once("db-connection-lib.php");
 
+// TODO PDO-based DBMS
+
 $stmt = $mysqli->prepare("SELECT password FROM users WHERE username=?;");
 $stmt->bind_param("s", $username);
 $stmt->execute();
@@ -30,5 +32,3 @@ $message = "The password of user $username was sent at address $username.";
 //$message = $mail_message["message"];
 
 response_exit_message($message);
-
-?>

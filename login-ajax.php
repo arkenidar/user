@@ -8,6 +8,8 @@ require_once("db-connection-lib.php");
 
 $user = $_REQUEST["email"];
 
+// TODO PDO-based DBMS
+
 $stmt = $mysqli->prepare("SELECT id FROM users WHERE username=? AND password=?;");
 $stmt->bind_param("ss", $user, $_REQUEST["password"]);
 $stmt->execute();
@@ -33,5 +35,3 @@ if(isset($id) == false){
 
 $message = array("text"=>$text, "status"=>$status);
 response_exit_message($message);
-
-?>
