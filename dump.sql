@@ -1,5 +1,5 @@
-CREATE DATABASE  IF NOT EXISTS `database` /*!40100 DEFAULT CHARACTER SET utf8 */;
-USE `database`;
+CREATE DATABASE  IF NOT EXISTS `my_arkenidar` /*!40100 DEFAULT CHARACTER SET utf8 */;
+USE `my_arkenidar`;
 -- MySQL dump 10.13  Distrib 5.6.17, for Win32 (x86)
 --
 -- Host: 127.0.0.1    Database: database
