@@ -1,22 +1,29 @@
 <?php
 
-require_once("request-response-lib.php");
+$user = (string)@$_REQUEST['email'];
+$password = (string)@$_REQUEST['password'];
 
-request_valid_parameters_check( ["email", "password"] );
+if($user=='' || $password==''){
 
-require_once("db-connection-lib.php");
+	$message = 'User or password is blank.';
 
-$user = $_REQUEST["email"];
+}else{
 
-// TODO PDO-based DBMS
+try{
 
-$stmt = $mysqli->prepare("INSERT INTO users (`id`, `username`, `password`) VALUES (NULL, ?, ?);");
-$stmt->bind_param("ss", $user, $_REQUEST["password"]);
-$stmt->execute();
+require_once 'db-connection-lib.php';
+$stmt = $dbh->prepare('INSERT INTO users (id, username, password) VALUES (NULL, ?, ?)');
+$stmt->execute([$user, $password]);
+$message = "$user is now registered.";
 
-if($stmt->affected_rows==1)
-	$message = "$user is now registered.";
-else if($stmt->affected_rows==-1)
-	$message = "$user is already registered.";
+}catch(PDOException $e){
 
-response_exit_message($message);
+$message = 'exception in register insert';
+$code = (int)$e->getCode();
+if($code==23000) $message = "$user is already registered.";
+
+}
+
+}
+
+echo json_encode(['message'=>$message]);

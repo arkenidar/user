@@ -1,37 +1,50 @@
 <?php
 
-require_once("request-response-lib.php");
+$user = (string)@$_REQUEST['email'];
+$password = (string)@$_REQUEST['password'];
 
-request_valid_parameters_check( ["email", "password"] );
+if($user=='' || $password==''){
 
-require_once("db-connection-lib.php");
+	$text = 'User or password is blank.';
+	$status = 'login error';
 
-$user = $_REQUEST["email"];
+}else{
 
-// TODO PDO-based DBMS
+require_once 'db-connection-lib.php';
 
-$stmt = $mysqli->prepare("SELECT id FROM users WHERE username=? AND password=?;");
-$stmt->bind_param("ss", $user, $_REQUEST["password"]);
-$stmt->execute();
-$stmt->bind_result($id);
-$stmt->fetch();
+try{
 
-if(isset($id) == false){
+$stmt = $dbh->prepare('SELECT * FROM users WHERE username=? AND password=?');
+$stmt->execute([$user, $password]);
+$row = $stmt->fetch();
 
-	$text = "Login error. Insert a registered username with its password. If you are not yet registered please register.";
-	$status = "login error";
+if($stmt->rowCount() == 0){
 
-} else {
+	$text = 'Login error. Insert a registered username with its password. If you are not yet registered please register.';
+	$status = 'login error';
 
-	include("logout-lib.php");
+} else if($stmt->rowCount() == 1){
 
-	$_SESSION["user-name"] = $user;
-	$_SESSION["user-id"] = $id;
+	$id = $row['id'];
+
+	require 'logout-lib.php';
+
+	$_SESSION['user-name'] = $user;
+	$_SESSION['user-id'] = $id;
 
 	$text = "Login successful for $user.";
-	$status = "login successful";
+	$status = 'login successful';
 
 }
 
-$message = array("text"=>$text, "status"=>$status);
-response_exit_message($message);
+}catch(PDOException $e){
+
+	$text = 'Login error. An exceptional condition occurred.';
+	$status = 'login error';
+
+}
+
+}
+
+$message = ['text'=>$text, 'status'=>$status];
+echo json_encode(['message'=>$message]);
