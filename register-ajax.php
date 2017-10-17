@@ -1,26 +1,26 @@
 <?php
 
 $user = (string)@$_REQUEST['email'];
-$password = (string)@$_REQUEST['password'];
+$textual_avatar = (string)@$_REQUEST['textual_avatar'];
 
-if($user=='' || $password==''){
+if($user=='' || $textual_avatar==''){
 
-	$message = 'User or password is blank.';
+	$message = 'E-Mail or Nick-Name is blank.';
 
 }else{
 
 try{
 
 require_once 'db-connection-lib.php';
-$stmt = $dbh->prepare('INSERT INTO users (id, username, password) VALUES (NULL, ?, ?)');
-$stmt->execute([$user, $password]);
+$stmt = $dbh->prepare('INSERT INTO users (id, username, textual_avatar, password) VALUES (NULL, ?, ?, ?)');
+$stmt->execute([$user, $textual_avatar, uniqid()]);
 $message = "$user is now registered.";
 
 }catch(PDOException $e){
 
 $message = 'exception in register insert';
 $code = (int)$e->getCode();
-if($code==23000) $message = "$user is already registered.";
+if($code==23000) $message = "$user is already registered or $textual_avatar is already registered.";
 
 }
 

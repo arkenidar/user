@@ -16,7 +16,7 @@ $row = $stmt->fetch();
 
 if($stmt->rowCount()==0){
 
-	$message = "The username $username is not registered. Please use a registered email address as username. If you are not yet registered please register.";
+	$message = "The username $username is not registered. Please use a registered email address as username. If you are not yet registered please register. If you are registred consider retrieving password.";
 
 }else if($stmt->rowCount()==1){
 
