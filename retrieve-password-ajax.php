@@ -31,7 +31,8 @@ $mail_message =
 
 mail( $mail_message['to'], $mail_message['subject'], $mail_message['message']);
 
-$message = "The password of user $username was sent at address $username.";
+$message = "The password of user $username was sent at address $username.".
+' In case check also in your Spam folder to find it.';
 ///$message = $mail_message['message']; // TODO comment out for production version
 
 }
