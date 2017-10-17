@@ -14,7 +14,7 @@ try{
 require_once 'db-connection-lib.php';
 $stmt = $dbh->prepare('INSERT INTO users (id, username, textual_avatar, password) VALUES (NULL, ?, ?, ?)');
 $stmt->execute([$user, $textual_avatar, uniqid()]);
-$message = "$user is now registered.";
+$message = "$user is now registered. A user's password was set automatically. Please use the 'Retrieve Password' feature to login.";
 
 }catch(PDOException $e){
 
