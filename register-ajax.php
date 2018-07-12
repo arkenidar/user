@@ -21,7 +21,7 @@ $message = "$user is now registered. A user's password was set automatically. Pl
 $message = 'exception in register insert';
 $code = (int)$e->getCode();
 if($code==23000) $message = "$user is already registered or $textual_avatar is already registered.";
-
+else $message="error code: $code";
 }
 
 }

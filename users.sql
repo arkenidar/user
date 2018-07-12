@@ -1,13 +1,15 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.4.1deb2ubuntu2
--- http://www.phpmyadmin.net
+-- version 4.8.2
+-- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Oct 17, 2017 at 07:04 PM
--- Server version: 5.7.19-0ubuntu0.16.04.1
--- PHP Version: 7.0.22-0ubuntu0.16.04.1
+-- Generation Time: Jul 12, 2018 at 07:45 PM
+-- Server version: 10.2.16-MariaDB
+-- PHP Version: 7.2.7
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -17,10 +19,8 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `my_arkenidar`
+-- Database: `userdb`
 --
-CREATE DATABASE IF NOT EXISTS `my_arkenidar` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
-USE `my_arkenidar`;
 
 -- --------------------------------------------------------
 
@@ -30,10 +30,17 @@ USE `my_arkenidar`;
 
 CREATE TABLE `users` (
   `id` int(11) NOT NULL,
-  `username` varchar(45) DEFAULT NULL,
-  `password` varchar(45) DEFAULT NULL,
-  `textual_avatar` text
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `username` text NOT NULL,
+  `password` text NOT NULL,
+  `textual_avatar` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `username`, `password`, `textual_avatar`) VALUES
+(1, 'dario.cangialosi@gmail.com', '5b47ae1f25494', 'arkenidar');
 
 --
 -- Indexes for dumped tables
@@ -43,10 +50,7 @@ CREATE TABLE `users` (
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `id_UNIQUE` (`id`),
-  ADD UNIQUE KEY `username_UNIQUE` (`username`),
-  ADD UNIQUE KEY `unique_textual_avatar` (`textual_avatar`(20));
+  ADD PRIMARY KEY (`id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -56,7 +60,9 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+COMMIT;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
